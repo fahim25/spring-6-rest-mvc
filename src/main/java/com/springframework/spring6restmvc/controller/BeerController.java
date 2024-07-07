@@ -51,6 +51,8 @@ public class BeerController {
     }
 
 
+
+
     @PostMapping(BEER_PATH)
     //@RequestMapping(method = RequestMethod.POST)
     public ResponseEntity handlePost(@RequestBody Beer beer){
@@ -70,14 +72,26 @@ public class BeerController {
         return beerService.listBeers();
     }
 
+//    @ExceptionHandler(NotFoundException.class)
+//    public ResponseEntity handleNotFoundException(){
+//
+//        System.out.println("Running Nt Found Exception");
+//
+//        return ResponseEntity.notFound().build();
+//    }
+
 
     @GetMapping(value = BEER_PATH_ID)
     public Beer getBeerById(@PathVariable("beerId") UUID beerId){
 
         log.debug("Get Beer by Id - in controller");
 
-        return beerService.getBeerById(beerId);
+//        return beerService.getBeerById(beerId);
+
+        return beerService.getBeerById(beerId).orElseThrow(NotFoundException::new);
     }
+
+
 
 
 }
