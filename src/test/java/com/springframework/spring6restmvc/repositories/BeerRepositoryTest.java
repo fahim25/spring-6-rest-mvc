@@ -4,7 +4,6 @@ import com.springframework.spring6restmvc.bootstrap.BootstrapData;
 import com.springframework.spring6restmvc.entities.Beer;
 import com.springframework.spring6restmvc.model.BeerStyle;
 import com.springframework.spring6restmvc.service.BeerCsvServiceImpl;
-import com.springframework.spring6restmvc.service.BeerServiceImpl;
 import jakarta.validation.ConstraintViolationException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +25,7 @@ class BeerRepositoryTest {
 
     @Test
     void testGetBeerListByName() {
-        List<Beer> list = beerRepository.findAllByBeerNameIsLikeIgnoreCase("%Pub%");
+        List<Beer> list = beerRepository.findAllByBeerNameIsLikeIgnoreCase("%Pub%", null);
 
         assertThat(list.size()).isEqualTo(5);
     }
