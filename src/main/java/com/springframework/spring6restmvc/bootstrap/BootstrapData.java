@@ -8,6 +8,7 @@ import com.springframework.spring6restmvc.repositories.BeerRepository;
 import com.springframework.spring6restmvc.repositories.CustomerRepository;
 
 import com.springframework.spring6restmvc.service.BeerCsvService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.CommandLineRunner;
@@ -32,9 +33,10 @@ public class BootstrapData implements CommandLineRunner {
     private final CustomerRepository customerRepository;
     private final BeerCsvService beerCsvService;
 
+    @Transactional
     @Override
     public void run(String... args) throws Exception {
-//        loadCsvData();
+        loadCsvData();
         loadBeerData();
         loadCustomerData();
     }
