@@ -196,7 +196,7 @@ class BeerControllerIT {
     void testListBeers() {
         Page<BeerDTO> dtos = beerController.listBeers(null, null, null, 1, 25);
 
-        assertThat(dtos.getContent()).isEqualTo(2413);
+        assertThat(dtos.getTotalElements()).isEqualTo(2413);
     }
 
     @Rollback
